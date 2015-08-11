@@ -30,8 +30,9 @@ namespace FreightQuote.Web
                         "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
                       "~/Scripts/bootstrap.min.js",
@@ -75,7 +76,7 @@ namespace FreightQuote.Web
           "~/Content/kendo/kendo.silver.min.css"));
 
             bundles.Add(new StyleBundle("~/css/dashtheme").Include(
-         "~/Content/css/bootstrap.min.css",
+         "~/Content/css/bootstrap.css",
           "~/Content/css/font-awesome.min.css",
           "~/Content/css/ionicons.min.css",
          "~/Content/css/AdminLTE.css"));
@@ -84,7 +85,7 @@ namespace FreightQuote.Web
                 "~/Content/css/alertify.core.css"
                 ));
             bundles.IgnoreList.Clear();
-           
+
         }
     }
 }

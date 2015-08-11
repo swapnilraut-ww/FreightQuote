@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FreightQuote.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\QuoteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs">
       <DependentUpon>FreightQuote.tt</DependentUpon>
