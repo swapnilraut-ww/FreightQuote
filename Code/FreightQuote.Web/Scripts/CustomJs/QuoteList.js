@@ -17,13 +17,14 @@ $(document).ready(function () {
     });
 });
 
-
-
 function AfterRemoveQuote(data) {
     alertify.success("Quote removed successfully");
     BindVendorList("divQuoteList");
 
 }
+var itmCondOptions = [
+                        { text: "Swapnil", value: "1" },
+];
 function BindVendorList(divId) {
     $("#" + divId).kendoGrid({
         dataSource: {
@@ -32,6 +33,13 @@ function BindVendorList(divId) {
                 read: quote.quoteList
             },
             pageSize: 10
+        },
+        dataBound: function (e) {
+            $(".itemcond").kendoDropDownList({
+                dataTextField: "text",
+                dataValueField: "value",
+                dataSource: itmCondOptions,
+            });
         },
         height: 450,
         sortable: true,
@@ -43,19 +51,24 @@ function BindVendorList(divId) {
         columns: [
             {
                 field: "ReferenceNo",
-                title: "Reference No",
+                title: "Ref #",
+                width: 60,
+                
             },
             {
                 field: "PickupLocation",
-                title: "Pickup Location",
+                title: "Pick Location",
+                width: 120,
             },
             {
                 field: "DeliveryLocation",
                 title: "Delivery Location",
+                width: 120,
             },
              {
                  field: "ShipDate",
                  title: "Ship Date",
+                 width: 100,
                  type: "date",
                  format: "{0:MM/dd/yyyy}"
              },
@@ -63,38 +76,42 @@ function BindVendorList(divId) {
                  field: "CreationDate",
                  title: "Creation Date",
                  type: "date",
+                 width: 100,
                  format: "{0:MM/dd/yyyy}"
              },
             {
                 field: "Description",
                 title: "Description",
+                width: 140,
             },
             {
                 field: "Comments",
                 title: "Comments",
+                width: 80,
             },
             {
                 field: "QuoteId",
                 title: "Vender",
-                width: 80,
-                template: '<select><option value="open">Open</option></select>',
+                width: 120,
+                template: kendo.template($("#itmCondTemplate").html()),
                 sortable: false
             },
             {
                 field: "Status",
                 title: "Status",
+                width: 60,
             },
             {
                 field: "QuoteId",
                 title: "Edit",
-                width: 80,
+                width: 50,
                 template: '<span id="#=QuoteId#" class="editMsg" ><img id="#=QuoteId#" class="btnEdit" src="/Content/Images/edit.jpg" style="cursor: pointer;" /></span>',
                 sortable: false
             },
             {
                 field: "QuoteId",
                 title: "Delete",
-                width: 80,
+                width: 60,
                 template: '<span id="#=QuoteId#"  class="removeMsg" ><img id="#=QuoteId#" class="removeMsg" src="/Content/Images/deleteicon.png" style="cursor: pointer;" /></span>',
                 sortable: false
             }

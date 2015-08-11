@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="aeba8fb93a7e4bb4823539adc57ebe7c" Name="Diagram1">
-        <EntityTypeShape EntityType="FreightQuoteModel.Quote" Width="1.5" PointX="3.6547793520869591" PointY="3.0686048581584378" />
         <EntityTypeShape EntityType="FreightQuoteModel.Vender" Width="1.5" PointX="7.2936246503580477" PointY="6.2358847885559712" />
-        <AssociationConnector Association="FreightQuoteModel.FK_Quote_Vender" />
         <EntityTypeShape EntityType="FreightQuoteModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FreightQuoteModel.Quote" Width="1.5" PointX="9.5" PointY="5.875" />
+        <AssociationConnector Association="FreightQuoteModel.FK_Quote_Vender" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

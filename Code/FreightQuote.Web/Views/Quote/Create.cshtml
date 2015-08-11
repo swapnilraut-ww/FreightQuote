@@ -1,15 +1,24 @@
 ﻿@model FreightQuote.Data.Quote
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Quote";
 }
+<style type="text/css">
+    label {
+        font-weight: normal !important;
+    }
+
+    .k-header {
+        background-color: none !important;
+    }
+</style>
 @section scripts
 {
     @*<script type="text/javascript">
-        $(document).ready(function () {
-            $(".datepicker").datepicker();
-        });
-    </script>*@
+            $(document).ready(function () {
+                $(".datepicker").datepicker();
+            });
+        </script>*@
 }
 @using (Html.BeginForm("Create", "Quote", FormMethod.Post, new { @class = "form-horizontal" }))
 {
@@ -86,9 +95,9 @@
 
                     </div>
                 </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Send Quote</button>
-                    <button type="button" class="btn btn-danger btcancel">Cancel Quote</button>
+                <div align="center" class="box-footer">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="button" class="btn btn-danger btcancel">Cancel</button>
                 </div>
             </div>
         </div>

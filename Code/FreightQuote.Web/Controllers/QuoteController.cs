@@ -36,6 +36,7 @@ namespace FreightQuote.Web.Controllers
                       CreationDate = x.CreationDate,
                       Description = x.Description,
                       Comments = x.Comments,
+                      VendorName = x.Vender != null ? x.Vender.Name : "",
                       Status = x.Status
                   }), JsonRequestBehavior.AllowGet);
         }

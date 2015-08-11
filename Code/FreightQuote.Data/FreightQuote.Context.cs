@@ -25,8 +25,8 @@ namespace FreightQuote.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Quote> Quotes { get; set; }
         public DbSet<Vender> Venders { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
     }
 }

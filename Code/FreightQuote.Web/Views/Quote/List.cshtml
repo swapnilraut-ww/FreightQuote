@@ -7,20 +7,22 @@
             quoteList: '@Url.Action("GetQuoteList", "Quote")',
             editQuote: '@Url.Action("Edit", "Quote")',
             removeQuote: '@Url.Action("Remove", "Quote")'
-    }
+        }
     </script>
-
+    <script id="itmCondTemplate" type="text/x-kendo-tmpl">
+        <input id="itmCond_#=QuoteId#" data-itmid="#=QuoteId#" class="itemcond" value="#=VendorName#" style="width:100px" />
+    </script>
     <script src="~/Scripts/CustomJs/QuoteList.js"></script>
 }
 <div class='row'>
     <div class='col-md-12'>
         <div class='box box-info'>
-            <div class='box-body pad' style="min-height: 400px;">   
+            <div class='box-body pad' style="min-height: 400px;">
                 <div class="row">
                     <div class="col-xs-12" style="margin-bottom:10px;">
-                        <input id="btnAdd" type="button" value="Create" onclick="window.location='@Url.Action("Create", "Quote")    ';" class="btn btn-primary" style="float:right;" />
+                        <input id="btnAdd" type="button" value="Add Quote" onclick="window.location='@Url.Action("Create", "Quote")    ';" class="btn btn-primary" style="float:right;" />
                     </div>
-                </div>           
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="divQuoteList">
