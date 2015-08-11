@@ -4,44 +4,44 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FreightQuoteModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="FreightQuoteModelStoreContainer">
-          <EntitySet Name="Quote" EntityType="FreightQuoteModel.Store.Quote" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Vender" EntityType="FreightQuoteModel.Store.Vender" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Quote_Vender" Association="FreightQuoteModel.Store.FK_Quote_Vender">
-            <End Role="Vender" EntitySet="Vender" />
-            <End Role="Quote" EntitySet="Quote" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="FreightQuoteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Quote">
           <Key>
             <PropertyRef Name="QuoteId" />
           </Key>
-          <Property Name="QuoteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VenderId" Type="int" />
-          <Property Name="ReferenceNo" Type="nvarchar" Nullable="false" MaxLength="30" />
-          <Property Name="PickupLocation" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="DeliveryLocation" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReferenceNo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PickupLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeliveryLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ShipDate" Type="datetime" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Comments" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Vender">
           <Key>
             <PropertyRef Name="VendorId" />
           </Key>
-          <Property Name="VendorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
-          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Quote_Vender">
-          <End Role="Vender" Type="FreightQuoteModel.Store.Vender" Multiplicity="0..1" />
-          <End Role="Quote" Type="FreightQuoteModel.Store.Quote" Multiplicity="*" />
+          <End Role="Vender" Type="Self.Vender" Multiplicity="0..1" />
+          <End Role="Quote" Type="Self.Quote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vender">
               <PropertyRef Name="VendorId" />
@@ -51,6 +51,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="FreightQuoteModelStoreContainer">
+          <EntitySet Name="Quote" EntityType="Self.Quote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vender" EntityType="Self.Vender" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Quote_Vender" Association="Self.FK_Quote_Vender">
+            <End Role="Vender" EntitySet="Vender" />
+            <End Role="Quote" EntitySet="Quote" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -62,6 +71,7 @@
             <End Role="Vender" EntitySet="Venders" />
             <End Role="Quote" EntitySet="Quotes" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="FreightQuoteModel.User" />
         </EntityContainer>
         <EntityType Name="Quote">
           <Key>
@@ -103,6 +113,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -137,6 +155,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FreightQuoteModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -154,6 +181,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

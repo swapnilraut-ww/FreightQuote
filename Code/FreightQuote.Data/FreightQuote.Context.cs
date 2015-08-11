@@ -27,5 +27,6 @@ namespace FreightQuote.Data
     
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Vender> Venders { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -3,8 +3,10 @@
 }
 @section scripts{
     <script>
-        var vendor = {
-            vendorList: '@Url.Action("GetQuoteList", "Quote")',
+        var quote = {
+            quoteList: '@Url.Action("GetQuoteList", "Quote")',
+            editQuote: '@Url.Action("Edit", "Quote")',
+            removeQuote: '@Url.Action("Remove", "Quote")'
     }
     </script>
 
@@ -13,7 +15,12 @@
 <div class='row'>
     <div class='col-md-12'>
         <div class='box box-info'>
-            <div class='box-body pad' style="min-height: 400px;">              
+            <div class='box-body pad' style="min-height: 400px;">   
+                <div class="row">
+                    <div class="col-xs-12" style="margin-bottom:10px;">
+                        <input id="btnAdd" type="button" value="Create" onclick="window.location='@Url.Action("Create", "Quote")    ';" class="btn btn-primary" style="float:right;" />
+                    </div>
+                </div>           
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="divQuoteList">

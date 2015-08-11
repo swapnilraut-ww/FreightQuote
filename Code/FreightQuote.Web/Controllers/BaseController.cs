@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace FreightQuote.Web.Controllers
 {
@@ -21,5 +22,25 @@ namespace FreightQuote.Web.Controllers
                 return _db;
             }
         }
-	}
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            string actionName = filterContext.ActionDescriptor.ActionName;
+            string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            if (!(String.Equals(controllerName, "Account", StringComparison.OrdinalIgnoreCase) && String.Equals(actionName, "Login", StringComparison.OrdinalIgnoreCase)))
+            {
+                if (FreightSession.Current.User == null)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+                    {
+                        controller = "Account",
+                        action = "Login"
+                    }));
+                    return;
+                }
+            }
+
+            base.OnActionExecuting(filterContext);
+        }
+    }
 }

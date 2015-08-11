@@ -66,6 +66,9 @@
     <Compile Include="Quote.cs">
       <DependentUpon>FreightQuote.tt</DependentUpon>
     </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>FreightQuote.tt</DependentUpon>
+    </Compile>
     <Compile Include="Vender.cs">
       <DependentUpon>FreightQuote.tt</DependentUpon>
     </Compile>

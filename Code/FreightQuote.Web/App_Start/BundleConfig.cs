@@ -37,7 +37,9 @@ namespace FreightQuote.Web
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/Plugins/input-mask/jquery.inputmask.js",
-                      "~/Scripts/AdminLTE/app.js"
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/alertify.min.js",
+                      "~/Scripts/CustomJs/Common.js"
                       ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -81,7 +83,7 @@ namespace FreightQuote.Web
           "~/Content/css/ionicons.min.css",
          "~/Content/css/AdminLTE.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css/alerttheme").Include("~/Content/css/alertify.default.css",
+            bundles.Add(new StyleBundle("~/Content/alerttheme").Include("~/Content/css/alertify.default.css",
                 "~/Content/css/alertify.core.css"
                 ));
             bundles.IgnoreList.Clear();
