@@ -20,22 +20,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="ReferenceNo">Reference No#</label>
-                                <div class="col-md-9">
+                                <label class="control-label col-md-4" for="ReferenceNo">Reference No#</label>
+                                <div class="col-md-8">
                                     @Html.TextBoxFor(x => x.ReferenceNo, new { @class = "form-control", @placeholder = "Reference No#", @title = "Enter Reference No" })
                                     @Html.ValidationMessageFor(model => model.ReferenceNo)
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="PickupLocation">Pickup Location</label>
-                                <div class="col-md-9">
+                                <label class="control-label col-md-4" for="PickupLocation">Pickup Location</label>
+                                <div class="col-md-8">
                                     @Html.TextBoxFor(x => x.PickupLocation, new { @class = "form-control", @placeholder = "Pickup Location", @title = "Enter Pickup Location" })
                                     @Html.ValidationMessageFor(model => model.PickupLocation)
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="DeliveryLocation">Delivery Location</label>
-                                <div class="col-md-9">
+                                <label class="control-label col-md-4" for="DeliveryLocation">Delivery Location</label>
+                                <div class="col-md-8">
                                     @Html.TextBoxFor(x => x.DeliveryLocation, new { @class = "form-control", @placeholder = "Delivery Location", @title = "Enter Delivery Location" })
                                     @Html.ValidationMessageFor(model => model.DeliveryLocation)
                                 </div>
@@ -43,8 +43,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="Status">Status</label>
-                                <div class="col-md-9">
+                                <label class="control-label col-md-4" for="Status">Status</label>
+                                <div class="col-md-8">
                                     @Html.DropDownList("Status", ViewData["StatusList"] as IEnumerable<SelectListItem>, "Select Status", new { @class = "form-control" })
                                     @*@Html.TextBoxFor(x => x.Status, new { @class = "form-control", @placeholder = "Status", @title = "Enter Status" })*@
                                     @Html.ValidationMessageFor(model => model.Status)
@@ -58,8 +58,8 @@
                                     </div>
                                 </div>*@
                             <div class="form-group">
-                                <label class="control-label col-md-3" for="Status">Ship Date</label>
-                                <div class="col-md-9">
+                                <label class="control-label col-md-4" for="Status">Ship Date</label>
+                                <div class="col-md-8">
                                     @*@(Html.Kendo().DatePickerFor(x => x.ShipDate).Events(e => e.Change("startChange")))*@
                                     @Html.TextBoxFor(x => x.ShipDate, new { @class = "form-control datepicker", @placeholder = "Ship Date", @title = "Ship Date" })
                                     @Html.ValidationMessageFor(model => model.ShipDate)
