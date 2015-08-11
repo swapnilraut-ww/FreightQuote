@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightQuote.Data", "FreightQuote.Data\FreightQuote.Data.csproj", "{6251BDF0-E0F7-442E-9563-B34910CE722B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightQuote.Web", "FreightQuote.Web\FreightQuote.Web.csproj", "{6E8C403F-7974-47FC-A7D0-CE8465174963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6251BDF0-E0F7-442E-9563-B34910CE722B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6251BDF0-E0F7-442E-9563-B34910CE722B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6251BDF0-E0F7-442E-9563-B34910CE722B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6251BDF0-E0F7-442E-9563-B34910CE722B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8C403F-7974-47FC-A7D0-CE8465174963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8C403F-7974-47FC-A7D0-CE8465174963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8C403F-7974-47FC-A7D0-CE8465174963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8C403F-7974-47FC-A7D0-CE8465174963}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,207 @@
+﻿@model FreightQuote.Data.Quote
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Index", "ReportMessage", FormMethod.Post, new { @id = "frmReportMessage" }))
+{
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='box box-info'>
+                <div class='box-body pad' style="min-height: 400px;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <table style="border-collapse: separate; border-spacing: 5px 10px; width: 100%">
+                                <tr>
+                                    <td style="width: 25%">
+                                        @Html.LabelFor(x => x.ReferenceNo)
+                                    </td>
+                                    <td style="width:40%">
+                                        @Html.TextBoxFor(x => x.ReferenceNo, new { @class = "form-control", @placeholder = "Reference No#", @title = "Enter Task Title", @required = "required" })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(x => x.REF_DB.Title)
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 13%">
+                                        <label>Show On EveryPage</label>
+                                    </td>
+                                    <td style="width:40%">
+                                        @Html.CheckBoxFor(x => x.REF_DB.ShowOnEveryPage)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width: 13%">
+                                        <label>Display Forever</label>
+                                    </td>
+                                    <td style="width:40%">
+                                        @Html.CheckBoxFor(x => x.REF_DB.IsDisplayForEver)
+                                    </td>
+                                </tr>
+                                <tr class="trdatarng">
+                                    <td style="width: 10%">
+                                        <label>From Date:</label>
+                                    </td>
+                                    <td style="width:40%">
+                                        @(Html.Kendo().DatePickerFor(x => x.REF_DB.FromDate).Events(e => e.Change("startChange")))
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(x => x.REF_DB.FromDate)
+                                    </td>
+                                </tr>
+                                <tr class="trdatarng">
+                                    <td style="width: 10%">
+                                        <label>To Date:</label>
+                                    </td>
+                                    <td style="width:40%">
+                                        @(Html.Kendo().DatePickerFor(x => x.REF_DB.ToDate).Events(e => e.Change("endChange")))
+
+
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(x => x.REF_DB.ToDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 13%">
+                                        <label>Message Location</label>
+                                    </td>
+                                    <td style="width:40%">
+                                        @Html.DropDownListFor(x => x.REF_DB.MessageLocation, (SelectList)ViewBag.ReportLocations, new { @class = "form-control" })
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-xs-6">
+                            <label>Select Reports:</label>
+                            @Html.ListBoxFor(m => m.SelectedReports, (SelectList)ViewBag.ReportMessageFor, new { Multiple = "multiple" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table>
+                                <tr>
+                                    <td style="width: 13%; vertical-align: top">
+                                        <label>Message:</label>
+                                    </td>
+                                    <td>
+                                        @*<textarea id="REF_DB_Message" name="REF_DB_Message" rows="10" cols="20" style="width: 70%; height: 250px">
+                                            @Model.REF_DB.Message</textarea>*@
+                                        @Html.TextAreaFor(x => x.REF_DB.Message, new { @style = "width:977px; height: 170px;" })
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 20px;"></td>
+                                    <td>
+                                        <input type="submit" id="btnSaveTask" class="btn btn-primary" value="Save" style="width:80px" />
+                                        <input type="button" id="btnCancel" class="btn btn-danger btcancel" value="Cancel" style="width:80px" />
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Quote</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReferenceNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReferenceNo)
+                @Html.ValidationMessageFor(model => model.ReferenceNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PickupLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickupLocation)
+                @Html.ValidationMessageFor(model => model.PickupLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryLocation)
+                @Html.ValidationMessageFor(model => model.DeliveryLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShipDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipDate)
+                @Html.ValidationMessageFor(model => model.ShipDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreationDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreationDate)
+                @Html.ValidationMessageFor(model => model.CreationDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comments)
+                @Html.ValidationMessageFor(model => model.Comments)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
